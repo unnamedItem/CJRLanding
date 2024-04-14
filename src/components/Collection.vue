@@ -16,6 +16,7 @@ watchEffect(async () => {
   if (collection.value) {
     let xmlDoc = Parser.parseFromString(collection.value, "text/xml");
     collection.value = xmlToJson(xmlDoc);
+    console.log(collection)
   }
 })
 </script>
