@@ -30,21 +30,22 @@
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img src="https://culturaenjuego.ar/fotos/0_whatsappimage2023-09-30at8.47.02pm1.jpg" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-none d-md-block">
+              <div class="carousel-caption">
                 <h5>Eventos Anuales</h5>
-                <p>Cultura en juego 2023</p>
+                <p class="d-none d-md-block">Cultura en juego 2023</p>
               </div>
+              
             </div>
             <div class="carousel-item">
               <img src="https://scontent.fros9-1.fna.fbcdn.net/v/t39.30808-6/393170089_848219230645938_1382657175920257997_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGn-E6r4xWiM8C8l9e5QsFfYqmZDg-w_y5iqZkOD7D_LocWTnpViYvPhSi4lUiGSEgHpTn1ZdStuPqiOrEX-itL&_nc_ohc=gjL-e-eMrtYAb4cwEln&_nc_ht=scontent.fros9-1.fna&oh=00_AfCqSpDJcZivcIQik8S8iwuqGxYpQchfx6fvsgSp7DpB2w&oe=6623435D" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-none d-md-block">
+              <div class="carousel-caption">
                 <h5>Torneos</h5>
-                <p>Torneo de Catan</p>
+                <p class="d-none d-md-block">Torneo de Catan</p>
               </div>
             </div>
             <div class="carousel-item">
               <img src="https://scontent.fros9-1.fna.fbcdn.net/v/t39.30808-6/432942445_929797639154763_5953871606034285322_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHtrTqAQrlfdDTeXI8FjExz0klgzPB1XQLSSWDM8HVdAr5Nr0QFLUWGoDMfvcVaSlMzTv0zK570XW-zKuWNHY5F&_nc_ohc=oFuhpjxyclYAb6bvkre&_nc_oc=AdgovMvMYjKrg2rhdVbk4JwxtaVUIeUBWHF18pfl78kvZIzKt5mNwd_NYYoVh4qASuY&_nc_ht=scontent.fros9-1.fna&oh=00_AfDSPi0DRFGGIVBGnRKW0KR5zN6IHdfQzW04i3EW1LASVA&oe=6623496E" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-none d-md-block">
+              <div class="carousel-caption">
                 <h5>Juntadas Mensuales</h5>
                 <p></p>
               </div>
@@ -109,6 +110,8 @@ img {
 .carousel-caption {
   background-color: rgba(0, 0, 0, 0.7);
   border-radius: 20px;
+  padding: 1%;
+  font-size: small;
 }
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
