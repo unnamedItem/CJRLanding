@@ -1,9 +1,5 @@
-<script setup>
-
-</script>
-
 <template>
-  <div>
+  <div class="home">
     <!-- Encabezado -->
     <header id="inicio" class="jumbotron jumbotron-fluid text-center bg">
       <div class="container">
@@ -118,5 +114,9 @@ img {
 .carousel-control-prev-icon, .carousel-control-next-icon {
   background-color: rgba(0, 0, 0, 0.7);
   border-radius: 10px;
+}
+
+.home {
+  height: 80vh;
 }
 </style>
