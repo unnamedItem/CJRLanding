@@ -22,8 +22,8 @@ watchEffect(async () => {
 </script>
 
 <template>
-  <div v-if="collection">
-    <CollectionItem v-for="(item, index) in collection.items.item" :key="index" :item="item"></CollectionItem>
+  <div v-if="collection" class="row">
+    <CollectionItem v-for="(item, index) in collection.items.item" :key="index" :item="item" class="col-md-4"></CollectionItem>
   </div>
 </template>
 
