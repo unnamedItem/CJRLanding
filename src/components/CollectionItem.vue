@@ -24,7 +24,7 @@ const props = defineProps({
         <div class="card-body">
           <h5 class="card-title">{{ item.name }}</h5>
           <div class="d-flex justify-content-between">
-            <small>{{ item.yearpublished }}</small>
+            <small>{{ item.yearPublished }}</small>
             <abbr :title="Number(item.averageRating).toFixed(2)">
               <div>
                 <i v-for="i in 5" :key="i" v-bind:class="['text-warning', setStars(i, item.averageRating)]"></i>
