@@ -141,11 +141,11 @@ i:hover {
   color: var(--bs-primary-1);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4 {
   text-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4 {
   color: rgba(15, 15, 15, 0.9);
 }
 
