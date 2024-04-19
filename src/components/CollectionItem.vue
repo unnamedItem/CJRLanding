@@ -15,37 +15,39 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="card my-2 hidden">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img :src="item.image" alt="Card Image" class="card-image" />
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">{{ item.name }}</h5>
-          <div class="d-flex justify-content-between">
-            <small>{{ item.yearPublished }}</small>
-            <abbr :title="Number(item.averageRating).toFixed(2)">
-              <div>
-                <i v-for="i in 5" :key="i" v-bind:class="['text-warning', setStars(i, item.averageRating)]"></i>
-              </div>
-            </abbr>
+  <a :href="`https://boardgamegeek.com/boardgame/${item.gameId}`" target="_blank">
+    <div class="card my-2 hidden">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img :src="item.image" alt="Card Image" class="card-image" />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ item.name }}</h5>
+            <div class="d-flex justify-content-between">
+              <small>{{ item.yearPublished }}</small>
+              <abbr :title="Number(item.averageRating).toFixed(2)">
+                <div>
+                  <i v-for="i in 5" :key="i" v-bind:class="['text-warning', setStars(i, item.averageRating)]"></i>
+                </div>
+              </abbr>
+            </div>
+            <hr>
+            <table class="table table-borderless">
+              <tr>
+                <td>Jugadores</td>
+                <td class="d-flex justify-content-end">{{ item.minPlayers }} - {{ item.maxPlayers }}</td>
+              </tr>
+              <tr>
+                <td>Tiempo de juego</td>
+                <td class="d-flex justify-content-end">{{ item.playingTime }} Min.</td>
+              </tr>
+            </table>
           </div>
-          <hr>
-          <table class="table table-borderless">
-            <tr>
-              <td>Jugadores</td>
-              <td class="d-flex justify-content-end">{{ item.minPlayers }} - {{ item.maxPlayers }}</td>
-            </tr>
-            <tr>
-              <td>Tiempo de juego</td>
-              <td class="d-flex justify-content-end">{{ item.playingTime }} Min.</td>
-            </tr>
-          </table>
         </div>
       </div>
     </div>
-  </div>
+  </a>
 </template>
 
 <style scoped>
@@ -76,5 +78,17 @@ const props = defineProps({
 
 small {
   font-style: italic;
+}
+
+.card {
+  cursor: pointer;
+}
+
+.card:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+a {
+  text-decoration: none;
 }
 </style>

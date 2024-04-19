@@ -15,7 +15,7 @@ import Footer from './components/Footer.vue';
 nav {
     background-color: rgb(0, 0, 0, 0.5);
     min-height: 8vh;
-    font-size: large;
+    font-size: 1.5rem;
 }
 
 .footer {
@@ -28,6 +28,7 @@ nav {
     color: var(--bs-background);
     text-align: center;
     bottom: 0;
+    font-size: 1.2rem;
 }
 
 .main {

@@ -4,23 +4,15 @@
     <header id="inicio" class="jumbotron jumbotron-fluid text-center bg">
       <div class="container">
         <h1 class="display-4">Club de Juegos Rosario</h1>
+        <!-- <img src="../assets/logo.png" alt="" class="main-logo"> -->
         <p class="lead">Un lugar donde disfrutar de los mejores juegos de mesa modernos.</p>
         <a class="btn btn-primary btn-lg" href="/collection" role="button">Explora nuestros juegos</a>
       </div>
     </header>
 
-    <!-- Sección Sobre Nosotros -->
-    <section id="about" class="py-5 bg">
-      <div class="container">
-        <h2 class="text-center mb-4">Sobre nosotros</h2>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa nihil nemo dolores quod voluptatem odit necessitatibus temporibus nam autem beatae labore, accusantium pariatur vel saepe recusandae. Adipisci eius natus quidem qui, optio tempora at enim? Eveniet ut omnis porro perspiciatis. Molestiae saepe, quae quis quisquam pariatur nemo tempore ab excepturi animi consectetur ullam tempora blanditiis vel architecto nihil in non vitae doloribus iste, nobis possimus autem laboriosam? Culpa molestias ratione iste, esse excepturi quaerat illum! Ex, quod. Nostrum, aperiam? Quod repudiandae, nobis optio asperiores earum fuga nemo autem? Quas magnam velit dicta repellendus fuga culpa nostrum facere assumenda non recusandae?.</p>
-      </div>
-    </section>
-
     <!-- Eventos -->
     <section id="events" class="py-5 bg">
       <div class="container">
-        <h2 class="text-center mb-4">Eventos</h2>
         <div id="carouselExampleCaptions" class="carousel slide">
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -63,23 +55,35 @@
       </div>
     </section>
 
+    <!-- Sección Sobre Nosotros -->
+    <section id="about" class="py-5 bg">
+      <div class="container">
+        <h2 class="text-center mb-4">Sobre nosotros</h2>
+        <p class="about">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa nihil nemo dolores quod voluptatem odit necessitatibus temporibus nam autem beatae labore, accusantium pariatur vel saepe recusandae. Adipisci eius natus quidem qui, optio tempora at enim? Eveniet ut omnis porro perspiciatis. Molestiae saepe, quae quis quisquam pariatur nemo tempore ab excepturi animi consectetur ullam tempora blanditiis vel architecto nihil in non vitae doloribus iste, nobis possimus autem laboriosam? Culpa molestias ratione iste, esse excepturi quaerat illum! Ex, quod. Nostrum, aperiam? Quod repudiandae, nobis optio asperiores earum fuga nemo autem? Quas magnam velit dicta repellendus fuga culpa nostrum facere assumenda non recusandae?.</p>
+      </div>
+    </section>
+
     <!-- Sección Contacto -->
     <section id="contact" class="py-5 bg">
       <div class="container">
-        <h2 class="text-center mb-4">Contacto</h2>
-        <p>¿Tienes alguna pregunta? No dudes en ponerte en contacto con nosotros.</p>
-        <form>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Nombre">
-          </div>
-          <div class="form-group">
-            <input type="email" class="form-control" placeholder="Correo electrónico">
-          </div>
-          <div class="form-group">
-            <textarea class="form-control" rows="5" placeholder="Mensaje"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Enviar mensaje</button>
-        </form>
+        <!-- <h2 class="text-center mb-4">Redes Sociales</h2> -->
+        <div class="row justify-content-center">
+          <!-- <a href="#" target="_blank" class="col d-flex justify-content-center">
+            <i class="bi bi-whatsapp" style="font-size: 5rem;"></i>
+          </a> -->
+          <a href="https://www.instagram.com/clubdejuegos_rosario/" target="_blank" class="col d-flex justify-content-center" style="color: var(--bs-body-color);">
+            <i class="bi bi-instagram" style="font-size: 5rem;"></i>
+          </a>
+          <a href="https://www.facebook.com/ClubdeJuegosRosario" target="_blank" class="col d-flex justify-content-center" style="color: var(--bs-body-color);">
+            <i class="bi bi-facebook" style="font-size: 5rem;"></i>
+          </a>
+          <a href="https://discord.com/invite/DvnqgeHB" target="_blank" class="col d-flex justify-content-center" style="color: var(--bs-body-color);">
+            <i class="bi bi-discord" style="font-size: 5rem;"></i>
+          </a>
+          <a href="https://twitter.com/ClubDeJuegosRos" target="_blank" class="col d-flex justify-content-center" style="color: var(--bs-body-color);">
+            <i class="bi bi-twitter" style="font-size: 5rem;"></i>
+          </a>
+        </div>
       </div>
     </section>
   </div>
@@ -121,5 +125,36 @@ img {
 
 .home {
   height: 80vh;
+}
+
+.btn {
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.6);
+}
+
+i {
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+
+i:hover {
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  color: var(--bs-primary-1);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: rgba(15, 15, 15, 0.9);
+}
+
+.main-logo {
+  height: 20vh;
+  width: 20vh;
+}
+
+.about {
+  text-align: justify;
 }
 </style>
