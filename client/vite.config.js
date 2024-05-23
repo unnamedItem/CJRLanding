@@ -12,5 +12,17 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  build: {
+    assetsDir: "static",
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000', // Flask development server
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
   }
 })
