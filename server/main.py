@@ -7,9 +7,12 @@ from flask import Flask, render_template, jsonify
 from flask_cors import CORS
 
 from db.tables.games import Games
+from logger import setup_logger
 
 config = ConfigParser()
 config.read('config.ini')
+
+log = setup_logger('server')
 
 app = Flask(
     __name__,
@@ -37,4 +40,7 @@ def get():
 
 if __name__ == '__main__':
     games = Games()
+    log.info('Starting server...')
+    log.info('Server started at http://{}:{}'.format(config.get('server', 'host'), config.get('server', 'port')))
     app.run(debug=True, host=config.get('server', 'host'), port=config.get('server', 'port'))
+    log.info('Server stopped')

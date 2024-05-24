@@ -5,10 +5,12 @@ class Table(DB):
         super().__init__()
         self.table = table
         self.attr = attr
+        self.create()
 
     def create(self):
         self.connect_db()
         self.conn.execute(f"CREATE TABLE IF NOT EXISTS {self.table} ({', '.join([f'{key} {value}' for key, value, _ in self.attr])})")
+        self.log.info(f'Created table [{self.table}]')
         self.close_db()
 
     def insert(self, **kwargs):
@@ -23,6 +25,7 @@ class Table(DB):
             args[self.attr.index((key, _, primary))] = kwargs[key]
         to_format = (', '.join([key for key, _, primary in self.attr]), ','.join(['?'] * len(self.attr)), pkey, pval)
         self.conn.execute("INSERT INTO games ({0}) SELECT {1} WHERE NOT EXISTS (SELECT 1 FROM games WHERE {2} = {3})".format(*to_format), args)
+        self.log.info(f'Inserted into table [{self.table}] primary key [{pkey}] value [{pval}]')
         self.close_db()
 
     def select(self, cols, where, order='id', limit=10):
@@ -43,13 +46,15 @@ class Table(DB):
         self.connect_db()
         args = list('' for _ in range(len(self.attr)))
         for key, _, primary in self.attr:
-            if primary and not key in kwargs:
-                raise ValueError(f'Primary key {key} is missing')
+            if primary and key in kwargs:
+                raise ValueError(f'Cannot update primary key {key}')
             args[self.attr.index((key, _, primary))] = kwargs[key]
         self.conn.execute(f"UPDATE games SET {', '.join([f'{key} = ?' for key, _, primary in self.attr])} WHERE {where}", args)
+        self.log.info(f'Updated table [{self.table}]')
         self.close_db()
     
     def delete(self, where):
         self.connect_db()
         self.conn.execute(f"DELETE FROM games WHERE {where}")
+        self.log.info(f'Deleted from table [{self.table}]')
         self.close_db()
