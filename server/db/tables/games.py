@@ -1,4 +1,5 @@
 from configparser import ConfigParser
+import threading
 
 import xmltodict
 import requests
@@ -35,14 +36,18 @@ class Games(Table):
         self.collection = config.get('bgg', 'collection')
         self.collection_url = f"{config.get('bgg', 'api_url')}/collection/{self.collection}"
         super().__init__('games', GAME_ATTRIBUTES)
-        self.create()
         self.get_bgg()
 
     def get_bgg(self, forced=False):
-        game_ids = self.get_collection()
-        for id in game_ids:
-            already_exists = self.select('id', f"id = {id}") and not forced
-            not already_exists and self.get_game(id)
+        def _get_bgg():
+            self.log.info(f'Getting games from BGG...')
+            game_ids = self.get_collection()
+            for id in game_ids:
+                already_exists = self.select('id', f"id = {id}") and not forced
+                not already_exists and self.get_game(id)
+            self.log.info(f'Finished getting games from BGG...')
+        threading.Thread(target=_get_bgg).start()
+
 
     def get_collection(self):
         response = requests.get(self.collection_url)
