@@ -2,8 +2,14 @@ import logging
 
 from configparser import ConfigParser
 
+# -----------------------------------
+# config init
+
 config = ConfigParser()
 config.read('config.ini')
+
+# -----------------------------------
+# logger
 
 formatter = logging.Formatter('%(asctime)s - %(levelname)s - [%(name)s]: %(message)s')
 
@@ -18,3 +24,9 @@ def setup_logger(name):
     logger.addHandler(handler)
 
     return logger
+
+server_logger = setup_logger('server')
+db_logger = setup_logger('db')
+
+# -----------------------------------
+# utils

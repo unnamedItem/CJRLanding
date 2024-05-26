@@ -1,19 +1,16 @@
 import sqlite3
 import os
-from configparser import ConfigParser
 
-from logger import setup_logger
+from utils import db_logger, config
 
-config = ConfigParser()
-config.read('config.ini')
 db_name = config.get('database', 'name')
-
+db_connection = sqlite3.connect(os.path.join(os.path.dirname(__file__), f'{db_name}.db'))
 
 class DB:
     def __init__(self):
         self.db_path = os.path.join(os.path.dirname(__file__), f'{db_name}.db')
-        self.conn = None
-        self.log = setup_logger('db')
+        self.conn = db_connection
+        self.log = db_logger
 
     def connect_db(self):
         try:
