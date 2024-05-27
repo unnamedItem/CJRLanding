@@ -3,7 +3,7 @@ import requests
 from flatten_json import flatten
 
 from db.tables.table import Table
-from utils import config
+from utils import config, db_logger
 
 
 GAME_ATTRIBUTES = [
@@ -35,12 +35,12 @@ class Games(Table):
         self.get_bgg()
 
     def get_bgg(self, forced=False):
-        self.log.info(f'Getting games from BGG...')
+        db_logger.info(f'Getting games from BGG...')
         game_ids = self.get_collection()
         for id in game_ids:
             already_exists = self.select(f"id = {id}") and not forced
             not already_exists and self.get_game(id)
-        self.log.info(f'Finished getting games from BGG...')
+        db_logger.info(f'Finished getting games from BGG...')
 
 
     def get_collection(self):

@@ -1,23 +1,33 @@
 import sqlite3
 import os
 
-from utils import db_logger, config
+from flask import g
 
-db_name = config.get('database', 'name')
-db_connection = sqlite3.connect(os.path.join(os.path.dirname(__file__), f'{db_name}.db'))
+from utils import config
 
-class DB:
-    def __init__(self):
-        self.db_path = os.path.join(os.path.dirname(__file__), f'{db_name}.db')
-        self.conn = db_connection
-        self.log = db_logger
+DB_NAME = config.get('database', 'name')
+DB_PATH = os.path.join(os.path.dirname(__file__), f'{DB_NAME}.db')
 
-    def connect_db(self):
-        try:
-            self.conn = sqlite3.connect(self.db_path)
-        except Exception as e:
-            self.log.error(f'Failed to connect to db [{db_name}]: {e}')
-    
-    def close_db(self):
-        self.conn.commit()
-        self.conn.close()
+db = {}
+
+
+def make_dicts(cursor, row):
+    return dict((cursor.description[idx][0], value)
+                for idx, value in enumerate(row))
+
+def get_db():
+    db = getattr(g, '_database', None)
+    if db is None:
+        db = g._database = sqlite3.connect(DB_PATH)
+        db.row_factory = make_dicts
+    return db
+
+def close_connection():
+    db = getattr(g, '_database', None)
+    if db is not None:
+        db.commit()
+        db.close()
+
+def init_db():
+    import db.tables as tables
+    db['games'] = tables.Games()
