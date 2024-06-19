@@ -15,6 +15,7 @@ export default defineConfig({
   },
   build: {
     assetsDir: "static",
+    outDir: "../server/app/dist",
   },
   server: {
     proxy: {

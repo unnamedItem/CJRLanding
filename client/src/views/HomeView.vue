@@ -11,7 +11,7 @@
     </header>
 
     <!-- Eventos -->
-    <section id="events" class="py-5 bg">
+    <section id="events" class="py-4 bg">
       <div class="container">
         <div id="carouselExampleCaptions" class="carousel slide">
           <div class="carousel-indicators">
@@ -58,7 +58,7 @@
     <!-- Sección Sobre Nosotros -->
     <section id="about" class="py-5 bg">
       <div class="container">
-        <h2 class="text-center mb-4">Sobre nosotros</h2>
+        <h2 class="text-center mb-3">Sobre nosotros</h2>
         <p class="about">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa nihil nemo dolores quod voluptatem odit necessitatibus temporibus nam autem beatae labore, accusantium pariatur vel saepe recusandae. Adipisci eius natus quidem qui, optio tempora at enim? Eveniet ut omnis porro perspiciatis. Molestiae saepe, quae quis quisquam pariatur nemo tempore ab excepturi animi consectetur ullam tempora blanditiis vel architecto nihil in non vitae doloribus iste, nobis possimus autem laboriosam? Culpa molestias ratione iste, esse excepturi quaerat illum! Ex, quod. Nostrum, aperiam? Quod repudiandae, nobis optio asperiores earum fuga nemo autem? Quas magnam velit dicta repellendus fuga culpa nostrum facere assumenda non recusandae?.</p>
       </div>
     </section>

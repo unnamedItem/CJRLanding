@@ -9,38 +9,72 @@ function setStars(i, rating) {
   }
 }
 
+function setPlayTime(min, max) {
+  if (min == max) {
+    return min;
+  } else {
+    return min + ' - ' + max;
+  }
+}
+
+function setAvgWeight(avg) {
+  if (avg == 5) {
+    return 'deadly';
+  } else if (avg > 4) {
+    return 'heavy';
+  } else if (avg > 3) {
+    return 'medium-heavy';
+  } else if (avg > 2) {
+    return 'medium';
+  } else if (avg > 1) {
+    return 'medium-light';
+  } else {
+    return 'light';
+  }
+}
+
 const props = defineProps({
     item: Object
 })
 </script>
 
 <template>
-  <a :href="`https://boardgamegeek.com/boardgame/${item.gameId}`" target="_blank">
+  <a :href="`https://boardgamegeek.com/boardgame/${item.objectid}`" target="_blank">
     <div class="card my-2 hidden">
       <div class="row g-0">
         <div class="col-md-4">
-          <img :src="item.image" alt="Card Image" class="card-image" />
+          <div class="card-image-container">
+            <img :src="item.image" alt="Card Image" class="card-image" />
+          </div>
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">{{ item.name }}</h5>
+            <abbr :title="item.name" style="text-decoration: none;"><h6 class="card-title">{{ item.name }}</h6></abbr>
             <div class="d-flex justify-content-between">
-              <small>{{ item.yearPublished }}</small>
-              <abbr :title="Number(item.averageRating).toFixed(2)">
+              <small>{{ item.yearpublished }}</small>
+              <abbr :title="Number(item.average).toFixed(2)">
                 <div>
-                  <i v-for="i in 5" :key="i" v-bind:class="['text-warning', setStars(i, item.averageRating)]"></i>
+                  <i v-for="i in 5" :key="i" v-bind:class="['text-warning', setStars(i, item.average)]"></i>
                 </div>
               </abbr>
             </div>
-            <hr>
+            <hr class="my-2">
             <table class="table table-borderless">
               <tr>
                 <td>Jugadores</td>
-                <td class="d-flex justify-content-end">{{ item.minPlayers }} - {{ item.maxPlayers }}</td>
+                <td class="d-flex justify-content-end">{{ item.minplayers }} - {{ item.maxplayers }}</td>
               </tr>
               <tr>
                 <td>Tiempo de juego</td>
-                <td class="d-flex justify-content-end">{{ item.playingTime }} Min.</td>
+                <td class="d-flex justify-content-end">{{ setPlayTime(item.minplaytime, item.maxplaytime) }} Min.</td>
+              </tr>
+              <tr>
+                <td>Edad: </td>
+                <td class="d-flex justify-content-end">+{{ item.age }}</td>
+              </tr>
+              <tr>
+                <td>Complejidad</td>
+                <td class="d-flex justify-content-end"><span :class="setAvgWeight(item.averageweight)">{{ item.averageweight.toFixed(1) }} / 5</span></td>
               </tr>
             </table>
           </div>
@@ -51,12 +85,16 @@ const props = defineProps({
 </template>
 
 <style scoped>
+.card-image-container {
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+
 .card-image {
   height: 20vh;
   width: 100%;
   object-fit: contain;
-  background-color: rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
 }
 
 .hidden {
@@ -74,6 +112,10 @@ const props = defineProps({
   background-color: rgba(255, 255, 255, 0.1);
   padding: 5px;
   border-radius: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
 }
 
 small {
@@ -82,6 +124,7 @@ small {
 
 .card {
   cursor: pointer;
+  font-size: 14px;
 }
 
 .card:hover {
@@ -90,5 +133,39 @@ small {
 
 a {
   text-decoration: none;
+}
+
+.pill {
+  background-color: rgba(131, 16, 16, 0.25);
+}
+
+.deadly {
+  color: rgb(87, 2, 2);
+}
+
+.heavy {
+  color: rgb(255, 0, 0);
+}
+
+.medium-heavy {
+  color: rgb(255, 128, 0);
+}
+
+.medium {
+  color: rgb(255, 255, 0);
+}
+
+.medium-light {
+  color: rgb(0, 255, 0);
+}
+
+.light {
+  color: rgb(0, 255, 255);
+}
+
+span {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
 }
 </style>

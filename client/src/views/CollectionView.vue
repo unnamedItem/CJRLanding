@@ -12,5 +12,6 @@ import Collection from '@/components/Collection.vue'
 .container {
     max-height: 80vh;
     scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+    max-width: 1800px;
 }
 </style>
