@@ -29,14 +29,14 @@
               
             </div>
             <div class="carousel-item">
-              <img src="https://scontent.fros9-1.fna.fbcdn.net/v/t39.30808-6/393170089_848219230645938_1382657175920257997_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGn-E6r4xWiM8C8l9e5QsFfYqmZDg-w_y5iqZkOD7D_LocWTnpViYvPhSi4lUiGSEgHpTn1ZdStuPqiOrEX-itL&_nc_ohc=gjL-e-eMrtYAb4cwEln&_nc_ht=scontent.fros9-1.fna&oh=00_AfCqSpDJcZivcIQik8S8iwuqGxYpQchfx6fvsgSp7DpB2w&oe=6623435D" class="d-block w-100" alt="...">
+              <img src="https://scontent.faep11-2.fna.fbcdn.net/v/t39.30808-6/453189240_1025428832924976_7565745049833852840_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHxoo6btU0mZO7evVRCxHvyjAYK77sUHSSMBgrvuxQdJK7dmP3B5lAWwQBHVfv1w33Nmg_wS0bVaUXJoz2pU7sT&_nc_ohc=MBW60OkvPkYQ7kNvgGJBPn2&_nc_ht=scontent.faep11-2.fna&_nc_gid=Az8OvIDWiFjVYbwWsgXd49R&oh=00_AYAWgObE6ZXECE6Z1tZxgcn9-gQ7EMG5OJ6R9yfLqMG8sw&oe=66D438E2" class="d-block w-100" alt="...">
               <div class="carousel-caption">
                 <h5>Torneos</h5>
-                <p class="d-none d-md-block">Torneo de Catan</p>
+                <p class="d-none d-md-block">Torneo de Sagrada</p>
               </div>
             </div>
             <div class="carousel-item">
-              <img src="https://scontent.fros9-1.fna.fbcdn.net/v/t39.30808-6/432942445_929797639154763_5953871606034285322_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHtrTqAQrlfdDTeXI8FjExz0klgzPB1XQLSSWDM8HVdAr5Nr0QFLUWGoDMfvcVaSlMzTv0zK570XW-zKuWNHY5F&_nc_ohc=oFuhpjxyclYAb6bvkre&_nc_oc=AdgovMvMYjKrg2rhdVbk4JwxtaVUIeUBWHF18pfl78kvZIzKt5mNwd_NYYoVh4qASuY&_nc_ht=scontent.fros9-1.fna&oh=00_AfDSPi0DRFGGIVBGnRKW0KR5zN6IHdfQzW04i3EW1LASVA&oe=6623496E" class="d-block w-100" alt="...">
+              <img src="https://scontent.faep11-2.fna.fbcdn.net/v/t39.30808-6/450206721_1009200914547768_6049030091936883403_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEdAwpvF_fZsAJWcTypq19ceQ6AoD-Rb-55DoCgP5Fv7gQp76NI_PnNRsGRvr8A9iSSMD4QtUmTuUAAsz_du7kQ&_nc_ohc=xvsD4wfskBIQ7kNvgFcc_As&_nc_ht=scontent.faep11-2.fna&oh=00_AYCHYV3ofCcBIc2LavD7bm7KlOY3T-wbrrHWwLr8rvk1OA&oe=66D460BA" class="d-block w-100" alt="...">
               <div class="carousel-caption">
                 <h5>Juntadas Mensuales</h5>
                 <p></p>
@@ -59,7 +59,7 @@
     <section id="about" class="py-5 bg">
       <div class="container">
         <h2 class="text-center mb-3">Sobre nosotros</h2>
-        <p class="about">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa nihil nemo dolores quod voluptatem odit necessitatibus temporibus nam autem beatae labore, accusantium pariatur vel saepe recusandae. Adipisci eius natus quidem qui, optio tempora at enim? Eveniet ut omnis porro perspiciatis. Molestiae saepe, quae quis quisquam pariatur nemo tempore ab excepturi animi consectetur ullam tempora blanditiis vel architecto nihil in non vitae doloribus iste, nobis possimus autem laboriosam? Culpa molestias ratione iste, esse excepturi quaerat illum! Ex, quod. Nostrum, aperiam? Quod repudiandae, nobis optio asperiores earum fuga nemo autem? Quas magnam velit dicta repellendus fuga culpa nostrum facere assumenda non recusandae?.</p>
+        <p class="about">¡Bienvenido al Club de Juegos Rosario! Si eres un apasionado de los juegos de mesa modernos, este es tu lugar. Nos reunimos mensualmente en La Fortaleza de 19:00 a 04:00 para una noche épica llena de estrategia, diversión y camaradería. Además, te invitamos a nuestras juntadas semanales los miércoles en Invictus de 18:00 a 21:00, donde puedes descubrir nuevos juegos y hacer nuevos amigos. ¡Únete a nosotros y forma parte de la comunidad de jugadores más entusiasta de Rosario!</p>
       </div>
     </section>
 

@@ -10,11 +10,10 @@ const API_URL = `http://localhost:8000/api/games`;
 const result = ref(null);
 const collectionCopy = ref(null);
 const search = ref(useRoute().query.search || '');
-const playingTimeFrom = ref(null);
-const playingTimeTo = ref(null);
-const numberOfPlayersFrom = ref(null);
-const numberOfPlayersTo = ref(null);
-
+const playingTime = ref(null);
+const numberOfPlayers = ref(null);
+const weight = ref(null);
+const age = ref(null);
 
 
 // =============================================================================
@@ -23,8 +22,10 @@ const collection = computed(() => {
   if (collectionCopy.value) {
     let filtered = collectionCopy.value;
     filtered = filterByName(filtered, search.value);
-    filtered = filterByPlayers(filtered, numberOfPlayersFrom.value, numberOfPlayersTo.value);
-    filtered = filterByPlayingTime(filtered, playingTimeFrom.value, playingTimeTo.value);
+    filtered = filterByPlayers(filtered, numberOfPlayers.value);
+    filtered = filterByPlayingTime(filtered, playingTime.value);
+    filtered = filterByWeight(filtered, weight.value);
+    filtered = filterByAge(filtered, age.value);
     return filtered;
   } else {
     return [];
@@ -49,6 +50,24 @@ const playTimeOptions = computed(() => {
   return [];
 })
 
+const avgWeightOptions = computed(() => {
+  return [
+    { value: [0, 1.5], text: 'Facil' },
+    { value: [1.5, 2.5], text: 'Intermedio' },
+    { value: [2.5, 3.5], text: 'Avanzado' },
+    { value: [3.5, 5], text: 'Muy Dificil' },
+  ];
+})
+
+const ageOptions = computed(() => {
+  if (collectionCopy.value) {
+    let age = collectionCopy.value.map(item => item.age);
+    let filtered = age.filter(item => item !== 0);
+    return [...new Set([...filtered])].sort((a, b) => a - b);
+  }
+  return [];
+})
+
 // =============================================================================
 // Functions
 const filterByName = (items, name) => {
@@ -56,18 +75,24 @@ const filterByName = (items, name) => {
   return items.filter(item => item.name.toLowerCase().includes(name.toLowerCase()))
 }
 
-const filterByPlayers = (items, minplayers, maxplayers) => {
-  if (!minplayers || !maxplayers) return items
-  if (!maxplayers) return items.filter(item => item.minplayers >= minplayers)
-  if (!minplayers) return items.filter(item => item.maxplayers <= maxplayers)
-  return items.filter(item => item.minplayers >= minplayers && item.maxplayers <= maxplayers)
+const filterByPlayers = (items, players) => {
+  if (!players) return items
+  return items.filter(item => parseInt(item.minplayers) <= players && parseInt(item.maxplayers) >= players)
 }
 
-const filterByPlayingTime = (items, minplaytime, maxplaytime) => {
-  if (!minplaytime || !maxplaytime) return items
-  if (!maxplaytime) return items.filter(item => item.minplaytime >= minplaytime)
-  if (!minplaytime) return items.filter(item => item.maxplaytime <= maxplaytime)
-  return items.filter(item => item.minplaytime >= minplaytime && item.maxplaytime <= maxplaytime)
+const filterByPlayingTime = (items, playtime) => {
+  if (!playtime) return items
+  return items.filter(item => parseInt(item.minplaytime) <= playtime && parseInt(item.maxplaytime) >= playtime)
+}
+
+const filterByWeight = (items, weight) => {
+  if (!weight) return items
+  return items.filter(item => item.averageweight >= weight[0] && item.averageweight <= weight[1])
+}
+
+const filterByAge = (items, age) => {
+  if (!age) return items
+  return items.filter(item => parseInt(item.age) <= parseInt(age))
 }
 
 // =============================================================================
@@ -101,10 +126,12 @@ onUpdated(() => {
 <template>
   <div v-if="collection" class="row">
     <div class="col-xl-3 col-12">
-      <div class="card d-none d-xl-block">
+      <div class="card mb-3">
         <!-- SEARCH FILTER -->
         <div class="card-body">
           <form @action.prevent="">
+            <h4>Filtros</h4>
+            <hr>
             <!-- NAME -->
             <div class="mb-3">
               <label class="form-label">Nombre</label>
@@ -113,18 +140,9 @@ onUpdated(() => {
             <!-- PLAYERS -->
             <div class="mb-3 row">
               <label class="form-label">Cantidad de Jugadores</label>
-              <div class="col-5">
-                <select class="form-select" v-model="numberOfPlayersFrom">
-                  <option :value="null">Min. Players</option>
-                  <option v-for="player in playersOptions" :key="player" :value="player">{{ player }}</option>
-                </select>
-              </div>
-              <div class="col-2 text-center">
-                -
-              </div>
-              <div class="col-5">
-                <select class="form-select" v-model="numberOfPlayersTo">
-                  <option :value="null">Max. Players</option>
+              <div class="col">
+                <select class="form-select" v-model="numberOfPlayers">
+                  <option :value="null">Max. Jugadores</option>
                   <option v-for="player in playersOptions" :key="player" :value="player">{{ player }}</option>
                 </select>
               </div>
@@ -132,31 +150,39 @@ onUpdated(() => {
             <!-- PLAYTIME -->
             <div class="mb-3 row">
               <label class="form-label">Tiempo de Juego</label>
-              <div class="col-5">
-                <select class="form-select" v-model="playingTimeFrom">
-                  <option :value="null">Min. Time</option>
-                  <option v-for="time in playTimeOptions" :key="time" :value="time">{{ time }}</option>
-                </select>
-              </div>
-              <div class="col-2 text-center">
-                -
-              </div>
-              <div class="col-5">
-                <select class="form-select" v-model="playingTimeTo">
-                  <option :value="null">Max. Time</option>
+              <div class="col">
+                <select class="form-select" v-model="playingTime">
+                  <option :value="null">Max. Tiempo</option>
                   <option v-for="time in playTimeOptions" :key="time" :value="time">{{ time }}</option>
                 </select>
               </div>
             </div>
             <!-- WEIGHT -->
-
+            <div class="mb-3 row">
+              <label class="form-label">Difultad</label>
+              <div class="col">
+                <select class="form-select" v-model="weight">
+                  <option :value="null">Max. Difultad</option>
+                  <option v-for="w in avgWeightOptions" :key="w" :value="w.value">{{ w.text }}</option>
+                </select>
+              </div>
+            </div>
             <!-- AGE -->
-
+            <div class="mb-row">
+              <label class="form-label">Edad</label>
+              <div class="col">
+                <select class="form-select" v-model="age">
+                  <option :value="null">Max. Edad</option>
+                  <option v-for="a in ageOptions" :key="a" :value="a">{{ a }}</option>
+                </select>
+              </div>
+            </div>
             <!-- TAGS -->
           </form>
         </div>
       </div>
     </div>
+    
     <!-- COLLECTION -->
     <div class="col-xl-9 col-12">
       <div class="row">
