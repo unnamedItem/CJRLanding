@@ -52,9 +52,9 @@ const props = defineProps({
             <abbr :title="item.name" style="text-decoration: none;"><h6 class="card-title">{{ item.name }}</h6></abbr>
             <div class="d-flex justify-content-between">
               <small>{{ item.yearpublished }}</small>
-              <abbr :title="Number(item.average).toFixed(2)">
+              <abbr :title="Number(item.bggRating || item.averageRating).toFixed(2)">
                 <div>
-                  <i v-for="i in 5" :key="i" v-bind:class="['text-warning', setStars(i, item.average)]"></i>
+                  <i v-for="i in 5" :key="i" v-bind:class="['text-warning', setStars(i, item.bggRating || item.averageRating)]"></i>
                 </div>
               </abbr>
             </div>
@@ -62,20 +62,20 @@ const props = defineProps({
             <table class="table table-borderless">
               <tr>
                 <td>Jugadores</td>
-                <td class="d-flex justify-content-end">{{ item.minplayers }} - {{ item.maxplayers }}</td>
+                <td class="d-flex justify-content-end">{{ item.minPlayers }} - {{ item.maxPlayers }}</td>
               </tr>
               <tr>
                 <td>Tiempo de juego</td>
-                <td class="d-flex justify-content-end">{{ setPlayTime(item.minplaytime, item.maxplaytime) }} Min.</td>
+                <td class="d-flex justify-content-end">{{ setPlayTime(item.playingTime, item.playingTime) }} Min.</td>
               </tr>
-              <tr>
+              <!-- <tr>
                 <td>Edad: </td>
                 <td class="d-flex justify-content-end">+{{ item.age }}</td>
-              </tr>
-              <tr>
+              </tr> -->
+              <!-- <tr>
                 <td>Complejidad</td>
                 <td class="d-flex justify-content-end"><span :class="setAvgWeight(item.averageweight)">{{ item.averageweight.toFixed(1) }} / 5</span></td>
-              </tr>
+              </tr> -->
             </table>
           </div>
         </div>
@@ -128,7 +128,7 @@ small {
 }
 
 .card:hover {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 a {

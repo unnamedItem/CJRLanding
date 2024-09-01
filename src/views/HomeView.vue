@@ -3,8 +3,11 @@
     <!-- Encabezado -->
     <header id="inicio" class="jumbotron jumbotron-fluid text-center bg">
       <div class="container">
-        <h1 class="display-4">Club de Juegos Rosario</h1>
-        <!-- <img src="../assets/logo.png" alt="" class="main-logo"> -->
+        <h1 class="display-4">
+          <img src="../assets/logo.png" alt="" class="main-logo" style="height: 75px; width: 75px">
+          <span> Club de Juegos Rosario </span>
+          <img src="../assets/logo.png" alt="" class="main-logo" style="height: 75px; width: 75px">
+        </h1>
         <p class="lead">Un lugar donde disfrutar de los mejores juegos de mesa modernos.</p>
         <a class="btn btn-primary btn-lg" href="/collection" role="button">Explora nuestros juegos</a>
       </div>
@@ -66,21 +69,18 @@
     <!-- Sección Contacto -->
     <section id="contact" class="py-5 bg">
       <div class="container">
-        <!-- <h2 class="text-center mb-4">Redes Sociales</h2> -->
+        <h2 class="text-center mb-4">Redes Sociales</h2>
         <div class="row justify-content-center">
-          <!-- <a href="#" target="_blank" class="col d-flex justify-content-center">
+          <a href="https://chat.whatsapp.com/J7888YH88f2IKlqye0q9XX" target="_blank" class="col d-flex justify-content-center" style="color: gray;">
             <i class="bi bi-whatsapp" style="font-size: 5rem;"></i>
-          </a> -->
-          <a href="https://www.instagram.com/clubdejuegos_rosario/" target="_blank" class="col d-flex justify-content-center" style="color: var(--bs-body-color);">
+          </a>
+          <a href="https://www.instagram.com/clubdejuegos_rosario/" target="_blank" class="col d-flex justify-content-center" style="color: gray;">
             <i class="bi bi-instagram" style="font-size: 5rem;"></i>
           </a>
-          <a href="https://www.facebook.com/ClubdeJuegosRosario" target="_blank" class="col d-flex justify-content-center" style="color: var(--bs-body-color);">
+          <a href="https://www.facebook.com/ClubdeJuegosRosario" target="_blank" class="col d-flex justify-content-center" style="color: gray;">
             <i class="bi bi-facebook" style="font-size: 5rem;"></i>
           </a>
-          <a href="https://discord.com/invite/DvnqgeHB" target="_blank" class="col d-flex justify-content-center" style="color: var(--bs-body-color);">
-            <i class="bi bi-discord" style="font-size: 5rem;"></i>
-          </a>
-          <a href="https://twitter.com/ClubDeJuegosRos" target="_blank" class="col d-flex justify-content-center" style="color: var(--bs-body-color);">
+          <a href="https://twitter.com/ClubDeJuegosRos" target="_blank" class="col d-flex justify-content-center" style="color: gray;">
             <i class="bi bi-twitter" style="font-size: 5rem;"></i>
           </a>
         </div>
@@ -99,10 +99,6 @@ img {
   height: 70vh;
   max-width: 100%;
   object-fit: contain;
-}
-
-.carousel {
-  box-shadow: 0 0 100px rgba(0, 0, 0, 0.6);
 }
 
 .card {
@@ -146,7 +142,7 @@ h1, h2, h3, h4 {
 }
 
 h1, h2, h3, h4 {
-  color: rgba(15, 15, 15, 0.9);
+  color: azure
 }
 
 .main-logo {
@@ -156,5 +152,16 @@ h1, h2, h3, h4 {
 
 .about {
   text-align: justify;
+}
+
+.container {
+  background-color: rgb(0, 0, 0, 0.7);
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.9);
+  color: azure;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-radius: 30px;
 }
 </style>

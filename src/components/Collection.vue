@@ -3,7 +3,7 @@ import { ref, watchEffect, onUpdated, computed } from "vue"
 import { useRoute } from 'vue-router';
 import CollectionItem from '@/components/CollectionItem.vue'
 
-const API_URL = `http://localhost:8000/api/games`;
+const API_URL = `https://bgg-json.azurewebsites.net/collection/clubdejuegosrosario`;
 
 // =============================================================================
 // Variables
@@ -104,7 +104,7 @@ watchEffect(async () => {
 watchEffect(() => {
   if (result.value) {
     collectionCopy.value = JSON.parse(result.value);
-    
+    console.log(collectionCopy.value);
   }
 })
 
@@ -158,7 +158,7 @@ onUpdated(() => {
               </div>
             </div>
             <!-- WEIGHT -->
-            <div class="mb-3 row">
+            <!-- <div class="mb-3 row">
               <label class="form-label">Difultad</label>
               <div class="col">
                 <select class="form-select" v-model="weight">
@@ -166,9 +166,9 @@ onUpdated(() => {
                   <option v-for="w in avgWeightOptions" :key="w" :value="w.value">{{ w.text }}</option>
                 </select>
               </div>
-            </div>
+            </div> -->
             <!-- AGE -->
-            <div class="mb-row">
+            <!-- <div class="mb-row">
               <label class="form-label">Edad</label>
               <div class="col">
                 <select class="form-select" v-model="age">
@@ -176,7 +176,7 @@ onUpdated(() => {
                   <option v-for="a in ageOptions" :key="a" :value="a">{{ a }}</option>
                 </select>
               </div>
-            </div>
+            </div> -->
             <!-- TAGS -->
           </form>
         </div>
