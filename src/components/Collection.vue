@@ -34,8 +34,8 @@ const collection = computed(() => {
 
 const playersOptions = computed(() => {
   if (collectionCopy.value) {
-    let maxplayers = collectionCopy.value.map(item => item.maxplayers)
-    let minplayers = collectionCopy.value.map(item => item.minplayers)
+    let maxplayers = collectionCopy.value.map(item => item.maxPlayers)
+    let minplayers = collectionCopy.value.map(item => item.minPlayers)
     return [...new Set([...maxplayers, ...minplayers])].sort((a, b) => a - b);
   }
   return [];
@@ -43,8 +43,8 @@ const playersOptions = computed(() => {
 
 const playTimeOptions = computed(() => {
   if (collectionCopy.value) {
-    let maxplaytime = collectionCopy.value.map(item => item.maxplaytime)
-    let minplaytime = collectionCopy.value.map(item => item.minplaytime)
+    let maxplaytime = collectionCopy.value.map(item => item.playingTime)
+    let minplaytime = collectionCopy.value.map(item => item.playingTime)
     return [...new Set([...maxplaytime, ...minplaytime])].sort((a, b) => a - b);
   }
   return [];
@@ -77,12 +77,12 @@ const filterByName = (items, name) => {
 
 const filterByPlayers = (items, players) => {
   if (!players) return items
-  return items.filter(item => parseInt(item.minplayers) <= players && parseInt(item.maxplayers) >= players)
+  return items.filter(item => parseInt(item.minPlayers) <= players && parseInt(item.maxPlayers) >= players)
 }
 
 const filterByPlayingTime = (items, playtime) => {
   if (!playtime) return items
-  return items.filter(item => parseInt(item.minplaytime) <= playtime && parseInt(item.maxplaytime) >= playtime)
+  return items.filter(item => parseInt(item.playingTime) <= playtime && parseInt(item.playingTime) >= playtime)
 }
 
 const filterByWeight = (items, weight) => {
