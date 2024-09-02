@@ -39,7 +39,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <a :href="`https://boardgamegeek.com/boardgame/${item.objectid}`" target="_blank">
+  <a :href="`https://boardgamegeek.com/boardgame/${item.gameId}`" target="_blank">
     <div class="card my-2 hidden">
       <div class="row g-0">
         <div class="col-md-4">

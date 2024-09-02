@@ -3,13 +3,21 @@
     <!-- Encabezado -->
     <header id="inicio" class="jumbotron jumbotron-fluid text-center bg">
       <div class="container">
-        <h1 class="display-4">
-          <img src="../assets/logo.png" alt="" class="main-logo" style="height: 75px; width: 75px">
-          <span> Club de Juegos Rosario </span>
-          <img src="../assets/logo.png" alt="" class="main-logo" style="height: 75px; width: 75px">
-        </h1>
-        <p class="lead">Un lugar donde disfrutar de los mejores juegos de mesa modernos.</p>
-        <a class="btn btn-primary btn-lg" href="/collection" role="button">Explora nuestros juegos</a>
+        <div class="row d-flex align-items-center">
+          <div class="col-2">
+            <img src="../assets/logo.png" alt="" class="main-logo">
+          </div>
+          <div class="col-8">
+            <h1 class="display-4">
+              <span> Club de Juegos Rosario </span>
+            </h1>
+            <p class="lead">Un lugar donde disfrutar de los mejores juegos de mesa modernos.</p>
+            <a class="btn btn-primary btn-lg" href="/collection" role="button">Explora nuestros juegos</a>
+          </div>
+          <div class="col-2">
+            <img src="../assets/logo.png" alt="" class="main-logo">
+          </div>
+        </div>
       </div>
     </header>
 
@@ -71,16 +79,16 @@
       <div class="container">
         <h2 class="text-center mb-4">Redes Sociales</h2>
         <div class="row justify-content-center">
-          <a href="https://chat.whatsapp.com/J7888YH88f2IKlqye0q9XX" target="_blank" class="col d-flex justify-content-center" style="color: gray;">
+          <a href="https://chat.whatsapp.com/J7888YH88f2IKlqye0q9XX" target="_blank" class="col-12 col-lg-3  d-flex justify-content-center" style="color: gray;">
             <i class="bi bi-whatsapp" style="font-size: 5rem;"></i>
           </a>
-          <a href="https://www.instagram.com/clubdejuegos_rosario/" target="_blank" class="col d-flex justify-content-center" style="color: gray;">
+          <a href="https://www.instagram.com/clubdejuegos_rosario/" target="_blank" class="col-12 col-lg-3 d-flex justify-content-center" style="color: gray;">
             <i class="bi bi-instagram" style="font-size: 5rem;"></i>
           </a>
-          <a href="https://www.facebook.com/ClubdeJuegosRosario" target="_blank" class="col d-flex justify-content-center" style="color: gray;">
+          <a href="https://www.facebook.com/ClubdeJuegosRosario" target="_blank" class="col-12 col-lg-3 d-flex justify-content-center" style="color: gray;">
             <i class="bi bi-facebook" style="font-size: 5rem;"></i>
           </a>
-          <a href="https://twitter.com/ClubDeJuegosRos" target="_blank" class="col d-flex justify-content-center" style="color: gray;">
+          <a href="https://twitter.com/ClubDeJuegosRos" target="_blank" class="col-12 col-lg-3 d-flex justify-content-center" style="color: gray;">
             <i class="bi bi-twitter" style="font-size: 5rem;"></i>
           </a>
         </div>

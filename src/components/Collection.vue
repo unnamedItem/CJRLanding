@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router';
 import CollectionItem from '@/components/CollectionItem.vue'
 
 const API_URL = `https://bgg-json.azurewebsites.net/collection/clubdejuegosrosario`;
+const CACHE_TIME = 24 * 60 * 60 * 1000;
 
 // =============================================================================
 // Variables
@@ -95,16 +96,43 @@ const filterByAge = (items, age) => {
   return items.filter(item => parseInt(item.age) <= parseInt(age))
 }
 
+const cacheFetch = (url) => {
+  console.log(localStorage.getItem(`${url}-timestamp`))
+  console.log(Date.now() - localStorage.getItem(`${url}-timestamp`))
+  console.log(Date.now() - localStorage.getItem(`${url}-timestamp`) < CACHE_TIME)
+  return new Promise((resolve, reject) => {
+    if (localStorage.getItem(url) && Date.now() - localStorage.getItem(`${url}-timestamp`) < CACHE_TIME) {
+      resolve(localStorage.getItem(url));
+    }
+    fetch(url)
+      .then((response) => {
+        if (response.ok) {
+          return response.text();
+        } else {
+          reject(`Error ${response.status}: ${response.statusText}`);
+        }
+      })
+      .then((data) => {
+        localStorage.setItem(url, data);
+        localStorage.setItem(`${url}-timestamp`, Date.now());
+        resolve(data);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+}
+
 // =============================================================================
 // Watchers
 watchEffect(async () => {
-  result.value = await (await fetch(API_URL)).text(); 
+  result.value = await (await cacheFetch(API_URL)); 
 })
 
 watchEffect(() => {
   if (result.value) {
+    console.log(result.value)
     collectionCopy.value = JSON.parse(result.value);
-    console.log(collectionCopy.value);
   }
 })
 
