@@ -97,9 +97,6 @@ const filterByAge = (items, age) => {
 }
 
 const cacheFetch = (url) => {
-  console.log(localStorage.getItem(`${url}-timestamp`))
-  console.log(Date.now() - localStorage.getItem(`${url}-timestamp`))
-  console.log(Date.now() - localStorage.getItem(`${url}-timestamp`) < CACHE_TIME)
   return new Promise((resolve, reject) => {
     if (localStorage.getItem(url) && Date.now() - localStorage.getItem(`${url}-timestamp`) < CACHE_TIME) {
       resolve(localStorage.getItem(url));
@@ -131,7 +128,6 @@ watchEffect(async () => {
 
 watchEffect(() => {
   if (result.value) {
-    console.log(result.value)
     collectionCopy.value = JSON.parse(result.value);
   }
 })
