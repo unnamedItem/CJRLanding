@@ -4,18 +4,12 @@
     <header id="inicio" class="jumbotron jumbotron-fluid text-center bg">
       <div class="container">
         <div class="row d-flex align-items-center">
-          <div class="col-2">
-            <img src="../assets/logo.png" alt="" class="main-logo">
-          </div>
-          <div class="col-8">
+          <div class="col">
             <h1 class="display-4">
               <span> Club de Juegos Rosario </span>
             </h1>
             <p class="lead">Un lugar donde disfrutar de los mejores juegos de mesa modernos.</p>
             <a class="btn btn-primary btn-lg" href="/collection" role="button">Explora nuestros juegos</a>
-          </div>
-          <div class="col-2">
-            <img src="../assets/logo.png" alt="" class="main-logo">
           </div>
         </div>
       </div>
