@@ -6,7 +6,7 @@ const searchGame = (event) => {
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark">
+  <nav class="navbar navbar-expand-xl navbar-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">
         <img src="../assets/logo.png" alt="Logotipo" width="50" height="50" class="d-inline-block align-middle">

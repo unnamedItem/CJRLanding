@@ -1,4 +1,10 @@
 <script setup>
+import { ref, watchEffect, computed } from "vue"
+
+const WEIGHT_OFFSET = .25
+
+const locales = ref({});
+
 function setStars(i, rating) {
   if (i * 2 <= rating) {
     return 'bi bi-star-fill';
@@ -28,18 +34,54 @@ function setAvgWeight(avg) {
     return 'medium';
   } else if (avg > 1) {
     return 'medium-light';
-  } else {
+  } else if (avg > 0) {
     return 'light';
+  } else {
+    return 'no-weight';
   }
+}
+
+function setAvgWeightIcons(i, avg) {
+  if (i - WEIGHT_OFFSET <= avg) {
+    return 'bi bi-hexagon-fill';
+  } else if (i - 1 < avg) {
+    return 'bi bi-hexagon-half';
+  } else {
+    return 'bi bi-hexagon';
+  }
+}
+
+function setAvgWeightAbbr(avg) {
+  return avg == 0 ? 'Sin datos' : avg;
 }
 
 const props = defineProps({
     item: Object
 })
+
+const subDomains = computed(() => {
+  if (props.item) {
+    return props.item.boardgamesubdomain.split(', ').map(sub => sub !== '' ? sub : 'Juego');
+  }
+})
+
+const avgWeight = computed(() => {
+  if (props.item) {
+    return props.item.averageweight.toFixed(2);
+  }
+})
+
+watchEffect(async () => {
+  locales.value = await fetch('/locales.json').then(res => res.json());
+})
+
+const t = (txt) => {
+  return locales.value[txt]
+} 
 </script>
 
 <template>
-  <a :href="`https://boardgamegeek.com/boardgame/${item.gameId}`" target="_blank">
+  <a :href="`https://boardgamegeek.com/boardgame/${item.objectid}`" target="_blank">
     <div class="card my-2 hidden">
       <div class="row g-0">
         <div class="col-md-4">
@@ -51,10 +93,23 @@ const props = defineProps({
           <div class="card-body">
             <abbr :title="item.name" style="text-decoration: none;"><h6 class="card-title">{{ item.name }}</h6></abbr>
             <div class="d-flex justify-content-between">
+              <div>
+                <small v-for="sub in subDomains"><span class="mx-1" @click.prevent="$emit('subdomain', sub)">
+                  <abbr :title="t(sub)">
+                    <img v-if="sub == 'Party Games'" src="../assets/icons/party.svg" width="25px" height="25px">
+                    <img v-else-if="sub == 'Children\'s Games'" src="../assets/icons/childs.svg" width="25px" height="25px">
+                    <img v-else-if="sub == 'Family Games'" src="../assets/icons/family.svg" width="25px" height="25px">
+                    <img v-else-if="sub == 'Strategy Games'" src="../assets/icons/strategy.svg" width="25px" height="25px">
+                    <img v-else-if="sub == 'Abstract Games'" src="../assets/icons/abstract.svg" width="25px" height="25px">
+                    <img v-else-if="sub == 'Thematic Games'" src="../assets/icons/history.svg" width="25px" height="25px">
+                    <img v-else src="../assets/icons/dice.svg" width="25px" height="25px">
+                  </abbr>
+                </span></small>
+              </div>
               <small>{{ item.yearPublished }}</small>
-              <abbr :title="Number(item.bggRating || item.averageRating).toFixed(2)">
+              <abbr :title="Number(item.average).toFixed(2)">
                 <div>
-                  <i v-for="i in 5" :key="i" v-bind:class="['text-warning', setStars(i, item.bggRating || item.averageRating)]"></i>
+                  <i v-for="i in 5" :key="i" v-bind:class="['text-warning', setStars(i, item.average)]"></i>
                 </div>
               </abbr>
             </div>
@@ -62,20 +117,24 @@ const props = defineProps({
             <table class="table table-borderless">
               <tr>
                 <td>Jugadores</td>
-                <td class="d-flex justify-content-end">{{ item.minPlayers }} - {{ item.maxPlayers }}</td>
+                <td class="d-flex justify-content-end">{{ item.minplayers }} - {{ item.maxplayers }}</td>
               </tr>
               <tr>
                 <td>Tiempo de juego</td>
-                <td class="d-flex justify-content-end">{{ setPlayTime(item.playingTime, item.playingTime) }} Min.</td>
+                <td class="d-flex justify-content-end">{{ setPlayTime(item.minplaytime, item.maxplaytime) }} Min.</td>
               </tr>
-              <!-- <tr>
+              <tr>
                 <td>Edad: </td>
                 <td class="d-flex justify-content-end">+{{ item.age }}</td>
-              </tr> -->
-              <!-- <tr>
+              </tr>
+              <tr>
                 <td>Complejidad</td>
-                <td class="d-flex justify-content-end"><span :class="setAvgWeight(item.averageweight)">{{ item.averageweight.toFixed(1) }} / 5</span></td>
-              </tr> -->
+                <td class="d-flex justify-content-end">
+                  <abbr :title="setAvgWeightAbbr(avgWeight)" style="background-color: transparent;" class="p-0">
+                    <i v-for="i in 5" :key="i":class="[setAvgWeightIcons(i, avgWeight), setAvgWeight(avgWeight)]"></i>
+                  </abbr>
+                </td>
+              </tr>
             </table>
           </div>
         </div>
@@ -163,9 +222,17 @@ a {
   color: rgb(0, 255, 255);
 }
 
+.no-weight {
+  color: gray;
+}
+
 span {
   background-color: transparent;
   margin: 0;
   padding: 0;
+}
+
+.badge {
+    background-color: var(--bs-background) !important;
 }
 </style>
