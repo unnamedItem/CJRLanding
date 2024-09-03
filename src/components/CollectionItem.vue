@@ -116,19 +116,19 @@ const t = (txt) => {
             <hr class="my-2">
             <table class="table table-borderless">
               <tr>
-                <td>Jugadores</td>
+                <td><i class="bi bi-people-fill p-0" style="background-color: transparent; color: white;"></i> Jugadores</td>
                 <td class="d-flex justify-content-end">{{ item.minplayers }} - {{ item.maxplayers }}</td>
               </tr>
               <tr>
-                <td>Tiempo de juego</td>
+                <td><i class="bi bi-hourglass-split p-0" style="background-color: transparent; color: white;"></i> Duración</td>
                 <td class="d-flex justify-content-end">{{ setPlayTime(item.minplaytime, item.maxplaytime) }} Min.</td>
               </tr>
               <tr>
-                <td>Edad: </td>
+                <td><i class="bi bi-person-arms-up p-0" style="background-color: transparent; color: white;"></i> Edad</td>
                 <td class="d-flex justify-content-end">+{{ item.age }}</td>
               </tr>
               <tr>
-                <td>Complejidad</td>
+                <td><i class="bi bi-gear-fill p-0" style="background-color: transparent; color: white;"></i> Complejidad</td>
                 <td class="d-flex justify-content-end">
                   <abbr :title="setAvgWeightAbbr(avgWeight)" style="background-color: transparent;" class="p-0">
                     <i v-for="i in 5" :key="i":class="[setAvgWeightIcons(i, avgWeight), setAvgWeight(avgWeight)]"></i>

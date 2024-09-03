@@ -162,7 +162,7 @@ onUpdated(() => {
 
 <template>
   <div v-if="collection" class="row">
-    <div class="col-xl-3 col-12">
+    <div class="col-xxl-3 col-12">
       <div class="card mb-3">
         <!-- SEARCH FILTER -->
         <div class="card-body">
@@ -171,15 +171,15 @@ onUpdated(() => {
           <form @action.prevent="" class="collapse" id="filters">            
             <!-- NAME -->
             <div class="mb-3">
-              <label class="form-label">Nombre</label>
-              <input type="text" class="form-control mb-3" v-model="search">
+              <label class="form-label">Titulo</label>
+              <input type="text" class="form-control mb-3" v-model="search" placeholder="Buscar...">
             </div>
             <!-- PLAYERS -->
             <div class="mb-3 row">
               <label class="form-label">Cantidad de Jugadores</label>
               <div class="col">
                 <select class="form-select" v-model="numberOfPlayers">
-                  <option :value="null">Max. Jugadores</option>
+                  <option :value="null">Cualquier Número</option>
                   <option v-for="player in playersOptions" :key="player" :value="player">{{ player }}</option>
                 </select>
               </div>
@@ -189,7 +189,7 @@ onUpdated(() => {
               <label class="form-label">Tiempo de Juego</label>
               <div class="col">
                 <select class="form-select" v-model="playingTime">
-                  <option :value="null">Max. Tiempo</option>
+                  <option :value="null">Cualquier Duración</option>
                   <option v-for="time in playTimeOptions" :key="time" :value="time">{{ time }}</option>
                 </select>
               </div>
@@ -199,7 +199,7 @@ onUpdated(() => {
               <label class="form-label">Difultad</label>
               <div class="col">
                 <select class="form-select" v-model="weight">
-                  <option :value="null">Max. Difultad</option>
+                  <option :value="null">Todas las Difultades</option>
                   <option v-for="w in avgWeightOptions" :key="w" :value="w.value">{{ w.text }}</option>
                 </select>
               </div>
@@ -209,7 +209,7 @@ onUpdated(() => {
               <label class="form-label">Edad</label>
               <div class="col">
                 <select class="form-select" v-model="age">
-                  <option :value="null">Max. Edad</option>
+                  <option :value="null">Todas las Edades</option>
                   <option v-for="a in ageOptions" :key="a" :value="a">{{ a }}</option>
                 </select>
               </div>
@@ -219,7 +219,7 @@ onUpdated(() => {
               <label class="form-label">Categoria</label>
               <div class="col">
                 <select class="form-select" v-model="categories">
-                  <option :value="null">Todas</option>
+                  <option :value="null">Todas las Categorias</option>
                   <option v-for="tag in categoryOptions" :key="tag" :value="tag">{{ t(tag) }}</option>
                 </select>
               </div>
@@ -238,7 +238,7 @@ onUpdated(() => {
     </div>
     
     <!-- COLLECTION -->
-    <div class="col-xl-9 col-12">
+    <div class="col-xxl-9 col-12">
       <div class="row">
         <div v-for="(item, index) in collection" :key="index" class="col-lg-6 col-xl-4">
           <CollectionItem :item="item" @subdomain="onSubdomain($event)"></CollectionItem>
