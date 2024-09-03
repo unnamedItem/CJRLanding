@@ -80,7 +80,7 @@ const t = (txt) => {
 } 
 
 const onSubdomain = (subdomain) => {
-  categories.value = subdomain;
+  categories.value = subdomain != 'Juego' ? subdomain : null;
 }
 
 // =============================================================================
